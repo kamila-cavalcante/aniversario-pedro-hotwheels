@@ -12,7 +12,7 @@
 @page{size:A4;margin:0}
 *{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 html,body{margin:0;background:#8a8a85;font-family:var(--body);color:var(--ink)}
-.page{width:210mm;height:297mm;margin:10mm auto;background:#fff;position:relative;overflow:hidden;page-break-after:always;break-after:page;box-shadow:0 4px 18px rgba(0,0,0,.35)}
+.page{width:210mm;height:296mm;margin:10mm auto;background:#fff;position:relative;overflow:hidden;page-break-after:always;break-after:page;box-shadow:0 4px 18px rgba(0,0,0,.35)}
 @media print{html,body{background:#fff}.page{margin:0;box-shadow:none}.screen-only{display:none!important}}
 .screen-only{max-width:210mm;margin:16px auto;padding:14px 18px;background:#fff8d6;border:2px solid #111;border-radius:10px;font:600 15px var(--body)}
 .grid-bg{background-color:var(--paper);background-image:linear-gradient(var(--grid) .35mm,transparent .35mm),linear-gradient(90deg,var(--grid) .35mm,transparent .35mm);background-size:14mm 14mm}
@@ -56,12 +56,12 @@ html,body{margin:0;background:#8a8a85;font-family:var(--body);color:var(--ink)}
 .pennant .hem::after{content:"";position:absolute;left:0;right:0;top:6mm;border-top:.3mm dashed #888}
 .pennant .letter{font-family:var(--marker);font-weight:700;font-size:150pt;line-height:1;margin-top:8mm}
 /* Tent */
-.tent{position:absolute;left:12mm;right:12mm;top:28mm;height:240mm}
-.tent .face{height:120mm;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4mm;padding:10mm;position:relative;border:.6mm solid #111}
+.tent{position:absolute;left:12mm;right:12mm}
+.tent .face{height:65mm;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:2mm;padding:5mm;position:relative;border:.6mm solid #111}
 .tent .face.back{transform:rotate(180deg);border-top:none}
 .tent .fold{position:absolute;left:-6mm;right:-6mm;top:120mm;border-top:.4mm dashed #777}
-.tent h2{font-family:var(--script);color:var(--red);font-weight:400;font-size:44pt;margin:0;line-height:1}
-.tent p{font-family:var(--marker);font-weight:700;font-size:22pt;margin:0;line-height:1.2}
+.tent h2{font-family:var(--script);color:var(--red);font-weight:400;font-size:34pt;margin:0;line-height:1}
+.tent p{font-family:var(--marker);font-weight:700;font-size:17pt;margin:0;line-height:1.2}
 /* Índice */
 .idx{position:absolute;inset:16mm}
 .idx table{width:100%;border-collapse:collapse;font-size:10.5pt}
@@ -69,6 +69,26 @@ html,body{margin:0;background:#8a8a85;font-family:var(--body);color:var(--ink)}
 .idx th{background:var(--yellow);font-family:var(--marker);text-transform:uppercase;font-size:11pt}
 .idx td.n{text-align:center;font-weight:900;width:16mm}
 .idx ul{margin:2mm 0 0;padding-left:5mm;font-size:10.5pt;line-height:1.45}
+.five{font-family:var(--script);color:var(--red);font-size:250pt;line-height:.95;
+  -webkit-text-stroke:3mm #fff;paint-order:stroke fill;text-shadow:2.5mm 2.5mm 0 #111}
+.stk{position:relative;border-radius:50%;background:#fff;padding:var(--rim);border:.25mm solid #888}
+.stk .face{width:100%;height:100%;border-radius:50%;border:.5mm solid #111;overflow:hidden;display:grid;place-items:center;position:relative}
+.stk img{max-width:86%;max-height:72%}
+.s5{font-family:var(--script);color:var(--red);line-height:1;-webkit-text-stroke:.8mm #fff;paint-order:stroke fill;text-shadow:.7mm .7mm 0 #111}
+.tg{width:70mm;height:100mm;position:relative;border:.3mm dashed #888}
+.tg .in{position:absolute;inset:2.5mm;border:.6mm solid #111;border-radius:4mm;overflow:hidden;display:flex;flex-direction:column;align-items:center;text-align:center;padding:11mm 4mm 4mm;gap:1.5mm}
+.tg .top{position:absolute;top:0;left:0;right:0;height:8mm;--s:4mm;border-bottom:.6mm solid #111}
+.tg .hole{position:absolute;top:2mm;left:50%;margin-left:-2.2mm;width:4.4mm;height:4.4mm;border-radius:50%;background:#fff;border:.5mm solid #111;z-index:2}
+.tg p{margin:0;font-family:var(--marker);font-weight:700;font-size:12pt;line-height:1.12}
+.tg .bubble{background:#fff;border:.5mm solid #111;border-radius:3mm;box-shadow:1mm 1mm 0 #111;padding:2mm 2.5mm}
+.tg .sig{font-family:var(--script);color:var(--red);font-size:16pt;line-height:1;margin-top:auto}
+.tg .z{position:absolute;width:9mm}
+.batt{display:flex;align-items:center;gap:.6mm}
+.batt .b{width:22mm;height:10mm;border:.7mm solid #111;border-radius:1.6mm;background:#fff;padding:.8mm;display:flex}
+.batt .b i{display:block;width:8%;background:var(--red);border-radius:.6mm}
+.batt .t{width:1.6mm;height:4mm;background:#111;border-radius:0 .6mm .6mm 0}
+.check{font-family:var(--marker);font-weight:700;font-size:12pt;text-align:left;line-height:1.35}
+.check b{display:inline-grid;place-items:center;width:4.4mm;height:4.4mm;border:.5mm solid #111;background:#fff;color:var(--red);margin-right:1.5mm;font-size:11pt;line-height:1}
 </style>
 </head>
 <body>
@@ -88,22 +108,23 @@ html,body{margin:0;background:#8a8a85;font-family:var(--body);color:var(--ink)}
       <tr><td class="n">3</td><td>Placa Pit Stop (comidas e doces)</td><td>A4 inteira</td><td>1</td></tr>
       <tr><td class="n">4</td><td>Placa Posto do Pedro (bebidas)</td><td>A4 inteira</td><td>1</td></tr>
       <tr><td class="n">5</td><td>Placa Equipe de Resgate (kit sobrevivência)</td><td>A4 inteira</td><td>1</td></tr>
-      <tr><td class="n">6</td><td>Placa Radiador dos Pilotos (filtro de água)</td><td>A4 inteira</td><td>1</td></tr>
-      <tr><td class="n">7</td><td>Banheiros feminino + masculino</td><td>A5 cada (corte ao meio)</td><td>1</td></tr>
-      <tr><td class="n">8</td><td>Mesa: Arquibancada VIP – Família</td><td>Tenda dobrável 18,6 × 12 cm</td><td>1 por mesa da família</td></tr>
-      <tr><td class="n">9</td><td>Mesa: Proibido ultrapassar a fila do bolo</td><td>Tenda dobrável 18,6 × 12 cm</td><td>1 por mesa de convidados</td></tr>
-      <tr><td class="n">10–12</td><td>Varal PEDRO 5 ANOS (12 bandeirolas)</td><td>9,5 × 12,8 cm</td><td>1 de cada página</td></tr>
-      <tr><td class="n">13</td><td>Topo de bolo (Pedro, 5 com pista, carro e logo)</td><td>até 18 cm</td><td>1</td></tr>
-      <tr><td class="n">14</td><td>Toppers de doce (20 por folha)</td><td>círculo 4,5 cm</td><td>8 folhas (80 pares = 80 doces, frente e verso)</td></tr>
-      <tr><td class="n">15</td><td>Toppers de cupcake (12 por folha)</td><td>círculo 6,5 cm</td><td>4 folhas</td></tr>
-      <tr><td class="n">16</td><td>Tag: Missão cumprida… sem bateria</td><td>8,5 × 5,2 cm (10 por folha)</td><td>2 folhas</td></tr>
-      <tr><td class="n">17</td><td>Tag: Piloto entregue sujo, cansado e feliz</td><td>8,5 × 5,2 cm</td><td>1 folha</td></tr>
-      <tr><td class="n">18</td><td>Tag: 0% de energia. De nada!</td><td>8,5 × 5,2 cm</td><td>1 folha</td></tr>
+      <tr><td class="n">6</td><td>Banheiro feminino</td><td>A4 inteira</td><td>1</td></tr>
+      <tr><td class="n">7</td><td>Banheiro masculino</td><td>A4 inteira</td><td>1</td></tr>
+      <tr><td class="n">8</td><td>Placa Radiador dos Pilotos (filtro de água)</td><td>A4 inteira</td><td>1</td></tr>
+      <tr><td class="n">9</td><td>Tendas de mesa: Arquibancada VIP – Família (2 por folha)</td><td>18,6 × 6,5 cm dobrada</td><td>1 folha a cada 2 mesas da família</td></tr>
+      <tr><td class="n">10</td><td>Tendas de mesa: Proibido ultrapassar a fila do bolo (2 por folha)</td><td>18,6 × 6,5 cm dobrada</td><td>1 folha a cada 2 mesas</td></tr>
+      <tr><td class="n">11–13</td><td>Varal PEDRO 5 ANOS (12 bandeirolas)</td><td>9,5 × 12,8 cm</td><td>1 de cada página</td></tr>
+      <tr><td class="n">14</td><td>Topo de bolo (Pedro, 5 com pista, carro e logo)</td><td>até 18 cm</td><td>1</td></tr>
+      <tr><td class="n">15</td><td>Toppers de doce com borda branca (24 por folha)</td><td>4 cm com a borda</td><td>7 folhas (84 pares, frente e verso)</td></tr>
+      <tr><td class="n">16</td><td>Toppers de cupcake com borda branca (12 por folha)</td><td>6 cm com a borda</td><td>4 folhas</td></tr>
+      <tr><td class="n">17</td><td>Tag: Missão cumprida… sem bateria</td><td>7 × 10 cm em pé (4 por folha)</td><td>4 folhas</td></tr>
+      <tr><td class="n">18</td><td>Tag: Piloto entregue sujo, cansado e feliz</td><td>7 × 10 cm em pé</td><td>3 folhas</td></tr>
+      <tr><td class="n">19</td><td>Tag: 0% de energia. De nada!</td><td>7 × 10 cm em pé</td><td>3 folhas</td></tr>
     </table>
     <ul>
       <li><b>Papel:</b> placas, varal e tendas em couché fosco 230 g (ou cole em papelão/foam). Toppers e tags em papel fotográfico fosco ou couché 180 g.</li>
-      <li><b>Toppers:</b> imprima sempre em pares e cole frente com verso, com o palito no meio. Corte pela linha tracejada.</li>
-      <li><b>Tags:</b> fure no círculo da faixa quadriculada e amarre com fitilho vermelho, ou grampeie na sacolinha.</li>
+      <li><b>Toppers:</b> imprima sempre em pares e cole frente com verso, com o palito no meio. Recorte pela borda de fora do contorno branco.</li>
+      <li><b>Tags:</b> fure no círculo do topo e amarre com fitilho vermelho, ou grampeie na sacolinha.</li>
       <li><b>Varal:</b> dobre a faixa branca de cima para trás na linha tracejada e passe o barbante por dentro.</li>
     </ul>
   </div>
@@ -111,26 +132,6 @@ html,body{margin:0;background:#8a8a85;font-family:var(--body);color:var(--ink)}
 
 <!-- placas grandes geradas por script -->
 <div id="signs"></div>
-
-<!-- 7 BANHEIROS -->
-<section class="page grid-bg">
-  <div class="cut" style="left:0;right:0;top:148.5mm;border-width:.3mm 0 0"></div>
-  <div class="lbl top">✂ corte na linha tracejada do meio</div>
-  <div class="sign" style="inset:10mm 12mm 158mm">
-    <div class="sticker" style="display:flex;flex-direction:column;align-items:center;gap:3mm;width:170mm;padding:6mm">
-      <div style="display:flex;align-items:center;gap:5mm"><span style="font-size:42pt">👩</span><h1 style="font-size:40pt">Pit Stop das Pilotas</h1></div>
-      <p style="font-size:21pt">Retoque o batom e volte para a pista! 💄</p>
-      <div class="chk" style="--s:5mm;width:60mm;height:10mm;border:.5mm solid #111"></div>
-    </div>
-  </div>
-  <div class="sign" style="inset:158mm 12mm 10mm">
-    <div class="sticker" style="display:flex;flex-direction:column;align-items:center;gap:3mm;width:170mm;padding:6mm">
-      <div style="display:flex;align-items:center;gap:5mm"><span style="font-size:42pt">👨</span><h1 style="font-size:40pt">Pit Stop dos Pilotos</h1></div>
-      <p style="font-size:21pt">Alívio de pressão no tanque 😂</p>
-      <div class="chk" style="--s:5mm;width:60mm;height:10mm;border:.5mm solid #111"></div>
-    </div>
-  </div>
-</section>
 
 <!-- 8–9 TENDAS -->
 <div id="tents"></div>
@@ -141,13 +142,11 @@ html,body{margin:0;background:#8a8a85;font-family:var(--body);color:var(--ink)}
 <section class="page">
   <div class="lbl top">Topo de bolo · recorte com 3 mm de borda branca em volta de cada peça e cole em palito de churrasco</div>
   <img src="pedro.png" style="position:absolute;top:16mm;left:15mm;width:180mm" alt="">
-  <svg style="position:absolute;top:96mm;left:12mm;width:92mm" viewBox="0 0 200 240" aria-hidden="true">
-    <path d="M150 30 H60 L50 115 Q75 98 105 100 Q160 105 158 155 Q155 205 100 208 Q60 210 40 185" fill="none" stroke="#fff" stroke-width="66" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M150 30 H60 L50 115 Q75 98 105 100 Q160 105 158 155 Q155 205 100 208 Q60 210 40 185" fill="none" stroke="#111" stroke-width="56" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M150 30 H60 L50 115 Q75 98 105 100 Q160 105 158 155 Q155 205 100 208 Q60 210 40 185" fill="none" stroke="#3b3e44" stroke-width="48" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M150 30 H60 L50 115 Q75 98 105 100 Q160 105 158 155 Q155 205 100 208 Q60 210 40 185" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="12 10"/>
-    <rect x="128" y="8" width="44" height="44" fill="#fff"/><g transform="translate(130 10)"><rect width="40" height="40" fill="#fff" stroke="#111" stroke-width="2"/><path d="M0 0h10v10H0zM20 0h10v10H20zM10 10h10v10H10zM30 10h10v10H30zM0 20h10v10H0zM20 20h10v10H20zM10 30h10v10H10zM30 30h10v10H30z" fill="#111"/></g>
-  </svg>
+  <div class="big5" style="position:absolute;top:92mm;left:14mm;width:90mm;text-align:center">
+    <div class="five">5</div>
+    <div class="marker" style="font-size:30pt;margin-top:-10mm;transform:rotate(-4deg)">aninhos</div>
+    <svg width="70mm" height="6mm" viewBox="0 0 180 12"><path d="M4 8 Q90 1 176 6" stroke="#e3161d" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+  </div>
   <img src="car.png" style="position:absolute;top:110mm;left:104mm;width:96mm" alt="">
   <img src="logo.png" style="position:absolute;top:168mm;left:98mm;width:104mm" alt="">
   <img src="flag.png" style="position:absolute;top:232mm;left:20mm;width:58mm" alt="">
@@ -168,6 +167,8 @@ const signs = [
   {pre:'Parada obrigatória', title:'Pit Stop', img:'flag', body:'Reabastecimento oficial<br>dos pilotos 🔧🍔', tag:'Comidas & doces'},
   {pre:'Abasteça aqui', title:'Posto do Pedro', img:'car', body:'Combustível aditivado ⛽', tag:'Bebidas'},
   {pre:'Kit sobrevivência', title:'Equipe de Resgate', img:null, body:'Kit para pilotos, mecânicos<br>e pais sobreviventes 🚑', tag:'Pegue o que precisar', icons:true},
+  {pre:'Banheiro feminino', title:'Pit Stop das Pilotas', img:null, big:'👩', body:'Retoque o batom e<br>volte para a pista! 💄', tag:'Pilotas'},
+  {pre:'Banheiro masculino', title:'Pit Stop dos Pilotos', img:null, big:'👨', body:'Alívio de pressão<br>no tanque 😂', tag:'Pilotos'},
   {pre:'Pausa pra hidratação', title:'Radiador dos Pilotos', img:'car', body:'Motor esquentou?<br>Resfrie aqui! 💧', tag:'Água fresquinha'},
 ];
 const icons = [['🩹','Curativo'],['🧻','Lenço umedecido'],['💊','Remédio p/ dor de cabeça'],['🌸','Absorvente'],['🧴','Mertiolate'],['☀️','Protetor solar'],['🦟','Repelente'],['💧','Água']];
@@ -177,20 +178,22 @@ $('#signs').innerHTML = signs.map(s => `<section class="page grid-bg">${corners}
     <h1>${s.title}</h1>
     <svg width="70mm" height="5mm" viewBox="0 0 180 12" style="margin-top:-4mm"><path d="M4 8 Q90 1 176 6" stroke="#e3161d" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
     ${s.img ? `<img src="${s.img}.png" style="max-width:${s.img==='flag'?'80mm':'120mm'}" alt="">` : ''}
+    ${s.big ? `<div style="font-size:110pt;line-height:1">${s.big}</div>` : ''}
     ${s.icons ? `<div class="icons">${icons.map(i=>`<div><span>${i[0]}</span>${i[1]}</div>`).join('')}</div>` : ''}
     <div class="sticker"><p>${s.body}</p></div>
     <span class="tagline">${s.tag}</span>
     <img src="logo.png" style="width:62mm;margin-top:2mm" alt="">
   </div></section>`).join('');
 
-// TENDAS
+// TENDAS (2 por A4)
 const tents = [
-  {t:'Arquibancada VIP', p:'Lugar dos torcedores oficiais do Pedro', s:'Família', e:'🏁'},
-  {t:'Atenção!', p:'Aqui é proibido ultrapassar… a fila do bolo!', s:'', e:'🎂'},
+  {t:'Arquibancada VIP', p:'Lugar dos torcedores oficiais do Pedro', s:'Família'},
+  {t:'Atenção!', p:'Aqui é proibido ultrapassar… a fila do bolo! 🎂', s:''},
 ];
-const face = (x, back) => `<div class="face grid-bg ${back?'back':''}"><span style="font-size:30pt">${x.e}</span><h2>${x.t}</h2><p>${x.p}</p>${x.s?`<span class="tagline">${x.s}</span>`:''}<div class="chk" style="--s:4mm;width:48mm;height:8mm;border:.5mm solid #111"></div></div>`;
-$('#tents').innerHTML = tents.map(x => `<section class="page"><div class="lbl top">Tenda de mesa · corte no contorno, dobre na linha tracejada do meio</div>
-  <div class="tent">${face(x,true)}${face(x,false)}<div class="fold"></div></div></section>`).join('');
+const face = (x, back) => `<div class="face grid-bg ${back?'back':''}"><h2>${x.t}</h2><p>${x.p}</p>${x.s?`<span class="tagline">${x.s}</span>`:'<img src="flag.png" style="width:34mm" alt="">'}</div>`;
+const tent = (x, top) => `<div class="tent" style="top:${top}mm;height:130mm">${face(x,true)}${face(x,false)}<div class="fold" style="top:65mm"></div></div>`;
+$('#tents').innerHTML = tents.map(x => `<section class="page"><div class="lbl top">Tendas de mesa · 2 por folha · corte no contorno e dobre na linha tracejada do meio</div>
+  ${tent(x,10)}${tent(x,152)}<div class="cut" style="left:0;right:0;top:146mm;border-width:.3mm 0 0"></div></section>`).join('');
 
 // VARAL
 const letters = ['car','P','E','D','R','O','5','A','N','O','S','car'];
@@ -207,30 +210,40 @@ for (let p = 0; p < 3; p++) v += `<section class="page"><div class="lbl top">Var
   <div class="sheet" style="grid-template-columns:repeat(2,95mm);gap:8mm 6mm;top:12mm">${letters.slice(p*4,p*4+4).map((l,i)=>pen(l,p*4+i)).join('')}</div></section>`;
 $('#varal').innerHTML = v;
 
-// TOPPERS
+// TOPPERS com borda branca de recorte
 const designs = [
-  d => `<img src="car.png" alt="">`,
-  d => `<img src="logo.png" alt="">`,
-  d => `<div class="num" style="font-size:${d*0.42}mm">5</div>`,
-  d => `<div class="chk" style="position:absolute;inset:0;--s:${d/6}mm"></div><div style="position:relative;background:#fff;border:.5mm solid #111;border-radius:3mm;padding:0 2mm;font-family:var(--script);color:var(--red);font-size:${d*0.3}mm">Pedro</div>`,
-  d => `<img src="pedro.png" style="max-width:92%" alt="">`,
-  d => `<div style="text-align:center;font-family:var(--marker);font-weight:700;line-height:1;font-size:${d*0.16}mm">5<br>ANINHOS</div>`,
+  d => `<div class="face grid-bg"><img src="car.png" alt=""></div>`,
+  d => `<div class="face grid-bg"><img src="logo.png" style="max-width:92%" alt=""></div>`,
+  d => `<div class="face grid-bg"><span class="s5" style="font-size:${d*0.62}mm">5</span></div>`,
+  d => `<div class="face chk" style="--s:${d/6}mm"><span style="background:#fff;border:.5mm solid #111;border-radius:2mm;padding:0 1.5mm;font-family:var(--script);color:var(--red);font-size:${d*0.26}mm;line-height:1.1">Pedro</span></div>`,
+  d => `<div class="face grid-bg"><img src="pedro.png" style="max-width:94%" alt=""></div>`,
+  d => `<div class="face" style="background:var(--red)"><span class="s5" style="font-size:${d*0.62}mm;color:#fff;-webkit-text-stroke:.8mm #111">5</span></div>`,
 ];
-const topperSheet = (d, cols, rows, title) => {
-  let cells = '';
-  for (let i = 0; i < cols*rows; i++) cells += `<div class="topper grid-bg" style="width:${d}mm;height:${d}mm">${designs[i % designs.length](d)}</div>`;
-  return `<section class="page"><div class="lbl top">${title}</div><div class="sheet" style="grid-template-columns:repeat(${cols},${d}mm);gap:${d>50?8:6}mm;top:16mm">${cells}</div></section>`;
+const topperSheet = (D, rim, cols, rows, gap, title) => {
+  const d = D - 2*rim; let cells = '';
+  for (let i = 0; i < cols*rows; i++) cells += `<div class="stk" style="width:${D}mm;height:${D}mm;--rim:${rim}mm">${designs[i % designs.length](d)}</div>`;
+  return `<section class="page grid-bg"><div class="lbl top" style="color:#555">${title}</div><div class="sheet" style="grid-template-columns:repeat(${cols},${D}mm);gap:${gap}mm;top:16mm">${cells}</div></section>`;
 };
-$('#toppers').innerHTML = topperSheet(45,4,5,'Toppers de doce · 4,5 cm · imprima em pares e cole frente com verso') + topperSheet(65,3,4,'Toppers de cupcake · 6,5 cm · imprima em pares e cole frente com verso');
+$('#toppers').innerHTML = topperSheet(40,3,4,6,7,'Toppers de doce · 4 cm com a borda branca · recorte pela borda de fora do branco · imprima em pares')
+  + topperSheet(60,4,3,4,8,'Toppers de cupcake · 6 cm com a borda branca · recorte pela borda de fora do branco · imprima em pares');
 
-// TAGS
-const tagTexts = [
-  ['Missão cumprida: devolvemos seu piloto <span style="color:var(--red)">sem bateria!</span> 🔋','Aperte o cinto e boa viagem!'],
-  ['Piloto entregue <span style="color:var(--red)">sujo, cansado e feliz.</span>','Obrigado por acelerar comigo! 🏁'],
-  ['Seu filho foi devolvido com <span style="color:var(--red)">0% de energia.</span>','De nada! 😂'],
+// TAGS 70 x 100 mm, em pé, fundo quadriculado
+const zz = (st) => `<svg class="z" style="${st}" viewBox="0 0 60 40"><path d="M4 10 L24 4 L14 20 L40 12 L30 30 L56 22" fill="none" stroke="#e3161d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const batt = (pct) => `<div class="batt"><div class="b"><i style="width:${pct}%"></i></div><div class="t"></div><span style="font-family:var(--marker);font-weight:700;color:var(--red);font-size:13pt;margin-left:1.5mm">${pct}%</span></div>`;
+const tagDefs = [
+  () => `<img src="car.png" style="width:44mm" alt="">${batt(3)}
+     <div class="bubble"><p>Missão cumprida! Devolvemos seu piloto <span style="color:var(--red)">sem bateria!</span></p></div>
+     <p style="font-size:10.5pt">Aperte o cinto e boa viagem! 🔋</p>`,
+  () => `<img src="car.png" style="width:40mm" alt=""><p style="font-size:11pt">Piloto entregue:</p>
+     <div class="check"><div><b>✓</b>SUJO</div><div><b>✓</b>CANSADO</div><div><b>✓</b>FELIZ</div></div>
+     <div class="bubble"><p style="font-size:10.5pt">Obrigado por acelerar comigo! 🏁</p></div>`,
+  () => `${batt(0)}<p style="font-size:13pt">Seu filho foi devolvido com <span style="color:var(--red)">0% de energia.</span></p>
+     <img src="car.png" style="width:40mm" alt=""><div class="bubble"><p style="font-size:14pt">De nada! 😂</p></div>`,
 ];
-$('#tags').innerHTML = tagTexts.map(t => `<section class="page"><div class="lbl top">Tags de sacolinha · 8,5 × 5,2 cm · corte na linha tracejada</div>
-  <div class="sheet" style="grid-template-columns:repeat(2,85mm);gap:0;top:12mm">${Array(10).fill(`<div class="tag"><div class="in grid-bg"><div class="strip chk"></div><div class="hole"></div><p>${t[0]}</p><p style="font-size:10.5pt">${t[1]}</p><div class="sig">— Pedro, 5 anos</div></div></div>`).join('')}</div></section>`).join('');
+const tagCard = f => `<div class="tg"><div class="in grid-bg"><div class="top chk"></div><div class="hole"></div>${zz('top:11mm;left:2mm')}${zz('bottom:16mm;right:2mm;transform:rotate(180deg)')}${f()}<div class="sig">Pedro · 5 anos</div></div></div>`;
+$('#tags').innerHTML = tagDefs.map(f => `<section class="page"><div class="lbl top">Tags de sacolinha · 7 × 10 cm · corte na linha tracejada e fure no círculo do topo</div>
+  <div class="sheet" style="grid-template-columns:repeat(2,70mm);gap:12mm 14mm;top:28mm">${Array(4).fill(tagCard(f)).join('')}</div></section>`).join('');
+
 </script>
 </body>
 </html>
