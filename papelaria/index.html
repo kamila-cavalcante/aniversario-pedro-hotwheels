@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Papelaria do Pedro · 5 anos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Kaushan+Script&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f6f5f1;--grid:#d6d4cc;--ink:#151515;--red:#e3161d;--yellow:#ffcc12;--blue:#1f5fd6;--orange:#ff7a12;
+  --marker:Kalam,"Comic Sans MS",cursive;--script:"Kaushan Script","Brush Script MT",cursive;--body:Nunito,Arial,sans-serif}
+@page{size:A4;margin:0}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html,body{margin:0;background:#8a8a85;font-family:var(--body);color:var(--ink)}
+.page{width:210mm;height:297mm;margin:10mm auto;background:#fff;position:relative;overflow:hidden;page-break-after:always;break-after:page;box-shadow:0 4px 18px rgba(0,0,0,.35)}
+@media print{html,body{background:#fff}.page{margin:0;box-shadow:none}.screen-only{display:none!important}}
+.screen-only{max-width:210mm;margin:16px auto;padding:14px 18px;background:#fff8d6;border:2px solid #111;border-radius:10px;font:600 15px var(--body)}
+.grid-bg{background-color:var(--paper);background-image:linear-gradient(var(--grid) .35mm,transparent .35mm),linear-gradient(90deg,var(--grid) .35mm,transparent .35mm);background-size:14mm 14mm}
+.marker{font-family:var(--marker);font-weight:700;text-transform:uppercase}
+.script{font-family:var(--script);color:var(--red)}
+.chk{background:conic-gradient(#111 25%,#fff 0 50%,#111 0 75%,#fff 0) 0 0/var(--s,9mm) var(--s,9mm)}
+.corner{position:absolute;width:42mm;height:42mm;border:.6mm solid #111}
+.corner.tl{top:-12mm;left:-14mm;transform:rotate(-14deg)}
+.corner.br{bottom:-12mm;right:-14mm;transform:rotate(-16deg)}
+.zig{position:absolute;width:22mm}
+.cut{position:absolute;border:.3mm dashed #9a9a9a}
+.lbl{position:absolute;bottom:4mm;left:0;right:0;text-align:center;font:600 8pt var(--body);color:#999}
+.lbl.top{top:3mm;bottom:auto}
+/* Placas */
+.sign{position:absolute;inset:14mm;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6mm}
+.sign h1{font-family:var(--script);color:var(--red);font-weight:400;font-size:62pt;line-height:1;margin:0;text-shadow:1.2mm 1.2mm 0 #fff,-1mm -1mm 0 #fff,1mm -1mm 0 #fff,-1mm 1mm 0 #fff}
+.sign h2{font-family:var(--marker);font-weight:700;text-transform:uppercase;font-size:30pt;line-height:1.1;margin:0}
+.sign p{font-family:var(--marker);font-weight:700;font-size:22pt;line-height:1.25;margin:0;max-width:160mm}
+.sticker{background:#fff;border:.8mm solid #111;border-radius:6mm;box-shadow:2.5mm 2.5mm 0 #111;padding:8mm 10mm}
+.tagline{display:inline-block;background:var(--yellow);border:.7mm solid #111;border-radius:3mm;padding:2mm 6mm;transform:rotate(-2deg);font-family:var(--marker);font-weight:700;text-transform:uppercase;font-size:18pt}
+.icons{display:grid;grid-template-columns:repeat(4,1fr);gap:4mm;width:170mm}
+.icons div{background:#fff;border:.6mm solid #111;border-radius:4mm;padding:3mm 2mm;font-family:var(--marker);font-weight:700;font-size:12.5pt;line-height:1.1;display:flex;flex-direction:column;align-items:center;gap:1.5mm}
+.icons span{font-size:24pt;line-height:1}
+/* Toppers */
+.sheet{position:absolute;top:14mm;left:0;right:0;display:grid;justify-content:center}
+.topper{border-radius:50%;border:.5mm solid #111;background:#fff;display:grid;place-items:center;overflow:hidden;position:relative;outline:.3mm dashed #aaa;outline-offset:1.2mm}
+.topper img{max-width:84%;max-height:70%}
+.topper .num{font-family:var(--marker);font-weight:700;color:#fff;background:var(--red);border-radius:50%;display:grid;place-items:center;border:.5mm solid #111;width:70%;height:70%}
+/* Tags */
+.tag{width:85mm;height:52mm;border:.3mm dashed #999;position:relative;padding:3mm}
+.tag .in{position:absolute;inset:3mm;border:.6mm solid #111;border-radius:4mm;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:3mm 5mm 3mm 11mm;gap:1.5mm;overflow:hidden}
+.tag .hole{position:absolute;left:4mm;top:50%;width:4mm;height:4mm;margin-top:-2mm;border-radius:50%;border:.5mm solid #111;background:#fff}
+.tag .strip{position:absolute;left:0;top:0;bottom:0;width:8.5mm;--s:4.25mm;border-right:.6mm solid #111}
+.tag p{margin:0;font-family:var(--marker);font-weight:700;font-size:12.5pt;line-height:1.15}
+.tag .sig{font-family:var(--script);color:var(--red);font-size:15pt;line-height:1}
+/* Varal */
+.pennant{width:95mm;height:128mm;position:relative}
+.pennant .shape{position:absolute;inset:0;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%);background:#111}
+.pennant .fill{position:absolute;inset:.8mm;clip-path:polygon(0 0,100% 0,100% 72%,50% 99.2%,0 72%);display:grid;place-items:center}
+.pennant .hem{position:absolute;top:0;left:0;right:0;height:13mm;border-bottom:.5mm dashed #111;background:#fff;z-index:2}
+.pennant .hem::after{content:"";position:absolute;left:0;right:0;top:6mm;border-top:.3mm dashed #888}
+.pennant .letter{font-family:var(--marker);font-weight:700;font-size:150pt;line-height:1;margin-top:8mm}
+/* Tent */
+.tent{position:absolute;left:12mm;right:12mm;top:28mm;height:240mm}
+.tent .face{height:120mm;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4mm;padding:10mm;position:relative;border:.6mm solid #111}
+.tent .face.back{transform:rotate(180deg);border-top:none}
+.tent .fold{position:absolute;left:-6mm;right:-6mm;top:120mm;border-top:.4mm dashed #777}
+.tent h2{font-family:var(--script);color:var(--red);font-weight:400;font-size:44pt;margin:0;line-height:1}
+.tent p{font-family:var(--marker);font-weight:700;font-size:22pt;margin:0;line-height:1.2}
+/* Índice */
+.idx{position:absolute;inset:16mm}
+.idx table{width:100%;border-collapse:collapse;font-size:10.5pt}
+.idx th,.idx td{border:.4mm solid #111;padding:2.2mm 3mm;text-align:left;vertical-align:top}
+.idx th{background:var(--yellow);font-family:var(--marker);text-transform:uppercase;font-size:11pt}
+.idx td.n{text-align:center;font-weight:900;width:16mm}
+.idx ul{margin:2mm 0 0;padding-left:5mm;font-size:10.5pt;line-height:1.45}
+</style>
+</head>
+<body>
+
+<div class="screen-only">🖨️ <b>Como imprimir:</b> aperte <b>Ctrl + P</b> (ou ⌘ + P no Mac) → Destino: sua impressora ou <b>"Salvar como PDF"</b> → Tamanho do papel <b>A4</b> · Margens <b>Nenhuma</b> · Escala <b>100%</b> · marque <b>"Gráficos de plano de fundo"</b>. Para imprimir só uma peça, use o campo <b>"Páginas"</b> (veja o índice na página 1).</div>
+
+<!-- 1 ÍNDICE -->
+<section class="page grid-bg">
+  <div class="idx">
+    <div style="display:flex;align-items:center;gap:6mm;margin-bottom:5mm">
+      <img src="pedro.png" style="width:78mm" alt="Pedro">
+      <div><div class="marker" style="font-size:20pt;line-height:1.1">Papelaria da festa</div><div class="marker" style="font-size:13pt;color:#555">5 anos · 07/11 · Bosque Alphaville 1</div></div>
+    </div>
+    <table>
+      <tr><th>Pág.</th><th>Peça</th><th>Tamanho final</th><th>Imprimir</th></tr>
+      <tr><td class="n">2</td><td>Placa Boas-vindas / Largada</td><td>A4 inteira</td><td>1</td></tr>
+      <tr><td class="n">3</td><td>Placa Pit Stop (comidas e doces)</td><td>A4 inteira</td><td>1</td></tr>
+      <tr><td class="n">4</td><td>Placa Posto do Pedro (bebidas)</td><td>A4 inteira</td><td>1</td></tr>
+      <tr><td class="n">5</td><td>Placa Equipe de Resgate (kit sobrevivência)</td><td>A4 inteira</td><td>1</td></tr>
+      <tr><td class="n">6</td><td>Placa Radiador dos Pilotos (filtro de água)</td><td>A4 inteira</td><td>1</td></tr>
+      <tr><td class="n">7</td><td>Banheiros feminino + masculino</td><td>A5 cada (corte ao meio)</td><td>1</td></tr>
+      <tr><td class="n">8</td><td>Mesa: Arquibancada VIP – Família</td><td>Tenda dobrável 18,6 × 12 cm</td><td>1 por mesa da família</td></tr>
+      <tr><td class="n">9</td><td>Mesa: Proibido ultrapassar a fila do bolo</td><td>Tenda dobrável 18,6 × 12 cm</td><td>1 por mesa de convidados</td></tr>
+      <tr><td class="n">10–12</td><td>Varal PEDRO 5 ANOS (12 bandeirolas)</td><td>9,5 × 12,8 cm</td><td>1 de cada página</td></tr>
+      <tr><td class="n">13</td><td>Topo de bolo (Pedro, 5 com pista, carro e logo)</td><td>até 18 cm</td><td>1</td></tr>
+      <tr><td class="n">14</td><td>Toppers de doce (20 por folha)</td><td>círculo 4,5 cm</td><td>8 folhas (80 pares = 80 doces, frente e verso)</td></tr>
+      <tr><td class="n">15</td><td>Toppers de cupcake (12 por folha)</td><td>círculo 6,5 cm</td><td>4 folhas</td></tr>
+      <tr><td class="n">16</td><td>Tag: Missão cumprida… sem bateria</td><td>8,5 × 5,2 cm (10 por folha)</td><td>2 folhas</td></tr>
+      <tr><td class="n">17</td><td>Tag: Piloto entregue sujo, cansado e feliz</td><td>8,5 × 5,2 cm</td><td>1 folha</td></tr>
+      <tr><td class="n">18</td><td>Tag: 0% de energia. De nada!</td><td>8,5 × 5,2 cm</td><td>1 folha</td></tr>
+    </table>
+    <ul>
+      <li><b>Papel:</b> placas, varal e tendas em couché fosco 230 g (ou cole em papelão/foam). Toppers e tags em papel fotográfico fosco ou couché 180 g.</li>
+      <li><b>Toppers:</b> imprima sempre em pares e cole frente com verso, com o palito no meio. Corte pela linha tracejada.</li>
+      <li><b>Tags:</b> fure no círculo da faixa quadriculada e amarre com fitilho vermelho, ou grampeie na sacolinha.</li>
+      <li><b>Varal:</b> dobre a faixa branca de cima para trás na linha tracejada e passe o barbante por dentro.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- placas grandes geradas por script -->
+<div id="signs"></div>
+
+<!-- 7 BANHEIROS -->
+<section class="page grid-bg">
+  <div class="cut" style="left:0;right:0;top:148.5mm;border-width:.3mm 0 0"></div>
+  <div class="lbl top">✂ corte na linha tracejada do meio</div>
+  <div class="sign" style="inset:10mm 12mm 158mm">
+    <div class="sticker" style="display:flex;flex-direction:column;align-items:center;gap:3mm;width:170mm;padding:6mm">
+      <div style="display:flex;align-items:center;gap:5mm"><span style="font-size:42pt">👩</span><h1 style="font-size:40pt">Pit Stop das Pilotas</h1></div>
+      <p style="font-size:21pt">Retoque o batom e volte para a pista! 💄</p>
+      <div class="chk" style="--s:5mm;width:60mm;height:10mm;border:.5mm solid #111"></div>
+    </div>
+  </div>
+  <div class="sign" style="inset:158mm 12mm 10mm">
+    <div class="sticker" style="display:flex;flex-direction:column;align-items:center;gap:3mm;width:170mm;padding:6mm">
+      <div style="display:flex;align-items:center;gap:5mm"><span style="font-size:42pt">👨</span><h1 style="font-size:40pt">Pit Stop dos Pilotos</h1></div>
+      <p style="font-size:21pt">Alívio de pressão no tanque 😂</p>
+      <div class="chk" style="--s:5mm;width:60mm;height:10mm;border:.5mm solid #111"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8–9 TENDAS -->
+<div id="tents"></div>
+<!-- 10–12 VARAL -->
+<div id="varal"></div>
+
+<!-- 13 TOPO DE BOLO -->
+<section class="page">
+  <div class="lbl top">Topo de bolo · recorte com 3 mm de borda branca em volta de cada peça e cole em palito de churrasco</div>
+  <img src="pedro.png" style="position:absolute;top:16mm;left:15mm;width:180mm" alt="">
+  <svg style="position:absolute;top:96mm;left:12mm;width:92mm" viewBox="0 0 200 240" aria-hidden="true">
+    <path d="M150 30 H60 L50 115 Q75 98 105 100 Q160 105 158 155 Q155 205 100 208 Q60 210 40 185" fill="none" stroke="#fff" stroke-width="66" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M150 30 H60 L50 115 Q75 98 105 100 Q160 105 158 155 Q155 205 100 208 Q60 210 40 185" fill="none" stroke="#111" stroke-width="56" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M150 30 H60 L50 115 Q75 98 105 100 Q160 105 158 155 Q155 205 100 208 Q60 210 40 185" fill="none" stroke="#3b3e44" stroke-width="48" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M150 30 H60 L50 115 Q75 98 105 100 Q160 105 158 155 Q155 205 100 208 Q60 210 40 185" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="12 10"/>
+    <rect x="128" y="8" width="44" height="44" fill="#fff"/><g transform="translate(130 10)"><rect width="40" height="40" fill="#fff" stroke="#111" stroke-width="2"/><path d="M0 0h10v10H0zM20 0h10v10H20zM10 10h10v10H10zM30 10h10v10H30zM0 20h10v10H0zM20 20h10v10H20zM10 30h10v10H10zM30 30h10v10H30z" fill="#111"/></g>
+  </svg>
+  <img src="car.png" style="position:absolute;top:110mm;left:104mm;width:96mm" alt="">
+  <img src="logo.png" style="position:absolute;top:168mm;left:98mm;width:104mm" alt="">
+  <img src="flag.png" style="position:absolute;top:232mm;left:20mm;width:58mm" alt="">
+  <img src="flag.png" style="position:absolute;top:232mm;left:122mm;width:58mm;transform:scaleX(-1)" alt="">
+</section>
+
+<div id="toppers"></div>
+<div id="tags"></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const corners = '<span class="corner tl chk"></span><span class="corner br chk"></span>';
+const zig = (pos) => `<svg class="zig" style="${pos}" viewBox="0 0 60 40" aria-hidden="true"><path d="M4 10 L24 4 L14 20 L40 12 L30 30 L56 22" fill="none" stroke="#e3161d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+// PLACAS A4
+const signs = [
+  {pre:'Bem-vindos à', title:'corrida do Pedro!', img:'car', body:'ATENÇÃO, PILOTOS: foi dada a largada.<br>Bora se divertir? 🏁', tag:'5 anos'},
+  {pre:'Parada obrigatória', title:'Pit Stop', img:'flag', body:'Reabastecimento oficial<br>dos pilotos 🔧🍔', tag:'Comidas & doces'},
+  {pre:'Abasteça aqui', title:'Posto do Pedro', img:'car', body:'Combustível aditivado ⛽', tag:'Bebidas'},
+  {pre:'Kit sobrevivência', title:'Equipe de Resgate', img:null, body:'Kit para pilotos, mecânicos<br>e pais sobreviventes 🚑', tag:'Pegue o que precisar', icons:true},
+  {pre:'Pausa pra hidratação', title:'Radiador dos Pilotos', img:'car', body:'Motor esquentou?<br>Resfrie aqui! 💧', tag:'Água fresquinha'},
+];
+const icons = [['🩹','Curativo'],['🧻','Lenço umedecido'],['💊','Remédio p/ dor de cabeça'],['🌸','Absorvente'],['🧴','Mertiolate'],['☀️','Protetor solar'],['🦟','Repelente'],['💧','Água']];
+$('#signs').innerHTML = signs.map(s => `<section class="page grid-bg">${corners}${zig('top:16mm;right:14mm')}${zig('bottom:18mm;left:12mm')}
+  <div class="sign">
+    <h2>${s.pre}</h2>
+    <h1>${s.title}</h1>
+    <svg width="70mm" height="5mm" viewBox="0 0 180 12" style="margin-top:-4mm"><path d="M4 8 Q90 1 176 6" stroke="#e3161d" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+    ${s.img ? `<img src="${s.img}.png" style="max-width:${s.img==='flag'?'80mm':'120mm'}" alt="">` : ''}
+    ${s.icons ? `<div class="icons">${icons.map(i=>`<div><span>${i[0]}</span>${i[1]}</div>`).join('')}</div>` : ''}
+    <div class="sticker"><p>${s.body}</p></div>
+    <span class="tagline">${s.tag}</span>
+    <img src="logo.png" style="width:62mm;margin-top:2mm" alt="">
+  </div></section>`).join('');
+
+// TENDAS
+const tents = [
+  {t:'Arquibancada VIP', p:'Lugar dos torcedores oficiais do Pedro', s:'Família', e:'🏁'},
+  {t:'Atenção!', p:'Aqui é proibido ultrapassar… a fila do bolo!', s:'', e:'🎂'},
+];
+const face = (x, back) => `<div class="face grid-bg ${back?'back':''}"><span style="font-size:30pt">${x.e}</span><h2>${x.t}</h2><p>${x.p}</p>${x.s?`<span class="tagline">${x.s}</span>`:''}<div class="chk" style="--s:4mm;width:48mm;height:8mm;border:.5mm solid #111"></div></div>`;
+$('#tents').innerHTML = tents.map(x => `<section class="page"><div class="lbl top">Tenda de mesa · corte no contorno, dobre na linha tracejada do meio</div>
+  <div class="tent">${face(x,true)}${face(x,false)}<div class="fold"></div></div></section>`).join('');
+
+// VARAL
+const letters = ['car','P','E','D','R','O','5','A','N','O','S','car'];
+const fills = ['red','chk','red','chk','red','chk','yellow','chk','red','chk','red','chk'];
+const pen = (l,i) => {
+  const f = fills[i], bg = f==='red'?'var(--red)':f==='yellow'?'var(--yellow)':'';
+  const col = f==='chk'?'#111':f==='yellow'?'#111':'#fff';
+  const inner = l==='car' ? `<img src="car.png" style="width:82mm;margin-top:10mm;filter:drop-shadow(0 0 1.5mm #fff)" alt="">`
+    : `<span class="letter" style="color:${col};${f==='chk'?'background:#fff;border:.8mm solid #111;border-radius:6mm;padding:0 6mm;':''}">${l}</span>`;
+  return `<div class="pennant"><div class="shape"></div><div class="fill ${f==='chk'?'chk':''}" style="${bg?`background:${bg}`:'--s:12mm'}">${inner}</div><div class="hem"></div></div>`;
+};
+let v = '';
+for (let p = 0; p < 3; p++) v += `<section class="page"><div class="lbl top">Varal · bandeirolas ${p*4+1} a ${p*4+4} de 12 · corte no contorno preto</div>
+  <div class="sheet" style="grid-template-columns:repeat(2,95mm);gap:8mm 6mm;top:12mm">${letters.slice(p*4,p*4+4).map((l,i)=>pen(l,p*4+i)).join('')}</div></section>`;
+$('#varal').innerHTML = v;
+
+// TOPPERS
+const designs = [
+  d => `<img src="car.png" alt="">`,
+  d => `<img src="logo.png" alt="">`,
+  d => `<div class="num" style="font-size:${d*0.42}mm">5</div>`,
+  d => `<div class="chk" style="position:absolute;inset:0;--s:${d/6}mm"></div><div style="position:relative;background:#fff;border:.5mm solid #111;border-radius:3mm;padding:0 2mm;font-family:var(--script);color:var(--red);font-size:${d*0.3}mm">Pedro</div>`,
+  d => `<img src="pedro.png" style="max-width:92%" alt="">`,
+  d => `<div style="text-align:center;font-family:var(--marker);font-weight:700;line-height:1;font-size:${d*0.16}mm">5<br>ANINHOS</div>`,
+];
+const topperSheet = (d, cols, rows, title) => {
+  let cells = '';
+  for (let i = 0; i < cols*rows; i++) cells += `<div class="topper grid-bg" style="width:${d}mm;height:${d}mm">${designs[i % designs.length](d)}</div>`;
+  return `<section class="page"><div class="lbl top">${title}</div><div class="sheet" style="grid-template-columns:repeat(${cols},${d}mm);gap:${d>50?8:6}mm;top:16mm">${cells}</div></section>`;
+};
+$('#toppers').innerHTML = topperSheet(45,4,5,'Toppers de doce · 4,5 cm · imprima em pares e cole frente com verso') + topperSheet(65,3,4,'Toppers de cupcake · 6,5 cm · imprima em pares e cole frente com verso');
+
+// TAGS
+const tagTexts = [
+  ['Missão cumprida: devolvemos seu piloto <span style="color:var(--red)">sem bateria!</span> 🔋','Aperte o cinto e boa viagem!'],
+  ['Piloto entregue <span style="color:var(--red)">sujo, cansado e feliz.</span>','Obrigado por acelerar comigo! 🏁'],
+  ['Seu filho foi devolvido com <span style="color:var(--red)">0% de energia.</span>','De nada! 😂'],
+];
+$('#tags').innerHTML = tagTexts.map(t => `<section class="page"><div class="lbl top">Tags de sacolinha · 8,5 × 5,2 cm · corte na linha tracejada</div>
+  <div class="sheet" style="grid-template-columns:repeat(2,85mm);gap:0;top:12mm">${Array(10).fill(`<div class="tag"><div class="in grid-bg"><div class="strip chk"></div><div class="hole"></div><p>${t[0]}</p><p style="font-size:10.5pt">${t[1]}</p><div class="sig">— Pedro, 5 anos</div></div></div>`).join('')}</div></section>`).join('');
+</script>
+</body>
+</html>
