@@ -117,9 +117,8 @@ html,body{margin:0;background:#8a8a85;font-family:var(--body);color:var(--ink)}
       <tr><td class="n">14</td><td>Topo de bolo (Pedro, 5 com pista, carro e logo)</td><td>até 18 cm</td><td>1</td></tr>
       <tr><td class="n">15</td><td>Toppers de doce com borda branca (24 por folha)</td><td>4 cm com a borda</td><td>7 folhas (84 pares, frente e verso)</td></tr>
       <tr><td class="n">16</td><td>Toppers de cupcake com borda branca (12 por folha)</td><td>6 cm com a borda</td><td>4 folhas</td></tr>
-      <tr><td class="n">17</td><td>Tag: Missão cumprida… sem bateria</td><td>7 × 10 cm em pé (4 por folha)</td><td>4 folhas</td></tr>
-      <tr><td class="n">18</td><td>Tag: Piloto entregue sujo, cansado e feliz</td><td>7 × 10 cm em pé</td><td>3 folhas</td></tr>
-      <tr><td class="n">19</td><td>Tag: 0% de energia. De nada!</td><td>7 × 10 cm em pé</td><td>3 folhas</td></tr>
+      <tr><td class="n">17–19</td><td>Tags OPÇÃO A (3 modelos: Missão cumprida, Piloto entregue, 0% de energia)</td><td>≈ 4,8 × 6,9 cm em pé (16 por folha)</td><td>1 folha de cada = 48 tags</td></tr>
+      <tr><td class="n">20–22</td><td>Tags OPÇÃO B (os mesmos 3 modelos)</td><td>≈ 6,4 × 9,1 cm em pé (9 por folha)</td><td>1 folha de cada = 27 tags (2 de cada = 54)</td></tr>
     </table>
     <ul>
       <li><b>Papel:</b> placas, varal e tendas em couché fosco 230 g (ou cole em papelão/foam). Toppers e tags em papel fotográfico fosco ou couché 180 g.</li>
@@ -227,7 +226,7 @@ const topperSheet = (D, rim, cols, rows, gap, title) => {
 $('#toppers').innerHTML = topperSheet(40,3,4,6,7,'Toppers de doce · 4 cm com a borda branca · recorte pela borda de fora do branco · imprima em pares')
   + topperSheet(60,4,3,4,8,'Toppers de cupcake · 6 cm com a borda branca · recorte pela borda de fora do branco · imprima em pares');
 
-// TAGS 70 x 100 mm, em pé, fundo quadriculado
+// TAGS desenhadas em 70 x 100 mm, em pé, fundo quadriculado
 const zz = (st) => `<svg class="z" style="${st}" viewBox="0 0 60 40"><path d="M4 10 L24 4 L14 20 L40 12 L30 30 L56 22" fill="none" stroke="#e3161d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 const batt = (pct) => `<div class="batt"><div class="b"><i style="width:${pct}%"></i></div><div class="t"></div><span style="font-family:var(--marker);font-weight:700;color:var(--red);font-size:13pt;margin-left:1.5mm">${pct}%</span></div>`;
 const tagDefs = [
@@ -241,8 +240,16 @@ const tagDefs = [
      <img src="car.png" style="width:40mm" alt=""><div class="bubble"><p style="font-size:14pt">De nada! 😂</p></div>`,
 ];
 const tagCard = f => `<div class="tg"><div class="in grid-bg"><div class="top chk"></div><div class="hole"></div>${zz('top:11mm;left:2mm')}${zz('bottom:16mm;right:2mm;transform:rotate(180deg)')}${f()}<div class="sig">Pedro · 5 anos</div></div></div>`;
-$('#tags').innerHTML = tagDefs.map(f => `<section class="page"><div class="lbl top">Tags de sacolinha · 7 × 10 cm · corte na linha tracejada e fure no círculo do topo</div>
-  <div class="sheet" style="grid-template-columns:repeat(2,70mm);gap:12mm 14mm;top:28mm">${Array(4).fill(tagCard(f)).join('')}</div></section>`).join('');
+// TAGS reduzidas: mesmo desenho 7 x 10, apenas escalado (Opção A ≈ 5 x 7 cm | Opção B ≈ 6,4 x 9,1 cm)
+const tagSheets = (opt, W, cols, rows, gap, top) => {
+  const k = W/70, H = +(100*k).toFixed(2);
+  return tagDefs.map((f,i) => {
+    const cell = `<div style="width:${W}mm;height:${H}mm;overflow:hidden;position:relative"><div style="width:70mm;height:100mm;transform:scale(${k});transform-origin:0 0">${tagCard(f)}</div></div>`;
+    return `<section class="page"><div class="lbl top">Tags de sacolinha · OPÇÃO ${opt} · ${W/10} × ${(H/10).toFixed(1)} cm · ${cols*rows} por folha · corte na linha tracejada e fure no círculo do topo · escolha só uma opção para imprimir</div>
+    <div class="sheet" style="grid-template-columns:repeat(${cols},${W}mm);gap:${gap}mm;top:${top}mm">${Array(cols*rows).fill(cell).join('')}</div></section>`;
+  }).join('');
+};
+$('#tags').innerHTML = tagSheets('A', 48, 4, 4, 1.5, 9) + tagSheets('B', 64, 3, 3, 2, 9);
 
 </script>
 </body>
